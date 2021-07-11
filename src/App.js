@@ -3,6 +3,7 @@ import logo from './assets/logo.svg';
 import './App.css';
 import Card from "./components/Card";
 import axios from 'axios'
+import DotCanvas from "./components/DotCanvas";
 
 const api = axios.create({
   baseURL: `http://192.168.0.107:5678/webhook/`
@@ -26,15 +27,18 @@ class App extends Component {
       console.log(res.data.servers)
     })
   }
+
+
   render() {
     return (
         <div className="App">
+          <DotCanvas>
+          </DotCanvas>
           <div className="CardSection">
             <Card type="server"></Card>
             <Card type="docker"></Card>
             <Card type="vm"></Card>
           </div>
-
         </div>
     );
   }
