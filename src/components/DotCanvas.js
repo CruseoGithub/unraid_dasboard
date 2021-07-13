@@ -1,7 +1,5 @@
-import React, { useRef, useEffect } from 'react'
+import React, {useEffect, useRef} from 'react'
 import './DotCanvas.css'
-
-
 
 
 const DotCanvas = props => {
@@ -22,6 +20,8 @@ const DotCanvas = props => {
         mouse.y = e.y;
     })
     window.addEventListener("mousedown",function (e){
+        mouse.x = e.x;
+        mouse.y = e.y;
         bubleCord.push({
             x:mouse.x,
             y:mouse.y,
@@ -29,8 +29,6 @@ const DotCanvas = props => {
             dx:(Math.random() - 0.5) * 2,
             dy:(Math.random() - 0.5) * 2
         })
-        mouse.x = e.x;
-        mouse.y = e.y;
     })
 
     useEffect(() => {
@@ -44,7 +42,7 @@ const DotCanvas = props => {
             bubleCord.push({
                 x:Math.random() * context.canvas.width,
                 y:Math.random() * context.canvas.height,
-                radius:Math.floor(Math.random() * 5),
+                radius:Math.floor(Math.random() * 8),
                 dx:(Math.random() - 0.5) * 2,
                 dy:(Math.random() - 0.5) * 2
                 /*x:Math.random() * window.innerWidth,
@@ -94,23 +92,18 @@ const DotCanvas = props => {
             if(s.y < 0 || s.y > canvas.height){
                 s.dy = - s.dy;
             }
-            //mouse
-            let distanceMouse = 300;
-            /*if(s.x - mouse.x < distanceMouse && s.x - mouse.x >= 0){
-                s.dx = - s.dx;
-            }
-            if(s.x - mouse.x > -distanceMouse && s.x - mouse.x <= -1){
-                s.dx = + s.dx;
-            }
-            if(s.y - mouse.y < distanceMouse && s.y - mouse.y >= 0){
-                s.dy = - s.dy;
-            }
-            if(s.y - mouse.y > -distanceMouse && s.y - mouse.y <= -1){
-                s.dy = + s.dy;
-            }*/
             if(distance(mouse,s) < 70){
-                let mx = s.dx - mouse.x
-                let my = s.dy - mouse.y
+                let newS = s;
+                let dx;
+                let dy;
+                while(distance(mouse,newS)< 70){
+                    dx = (Math.random() - 0.5) * 2;
+                    dy = (Math.random() - 0.5) * 2;
+                    newS.x += dx;
+                    newS.y +=dy;
+                }
+                s.dx = dx;
+                s.dy = dy;
 
             }
 
