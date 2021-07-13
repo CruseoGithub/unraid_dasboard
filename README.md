@@ -13,3 +13,5 @@ For now I implemented a dashboard with all three categories which will lead to a
 Down below you see a preview of the dashboard
 
 ![Alt Text](https://github.com/CruseoGithub/unraid_dasboard/blob/master/src/Screenshots/Server_Dashboard.gif)
+
+On the background you can see a canvas with moving dots which will flee from the cursor 
